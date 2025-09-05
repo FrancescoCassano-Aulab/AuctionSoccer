@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FantaCassi - Gestionale Asta Fantacalcio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* AGGIUNGO STILI MIGLIORATI PER LA VISUALIZZAZIONE */
+
+        /* Tabella giocatori migliorata */
+        .players-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            background: var(--bg-primary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .players-table th {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        .players-table td {
+            padding: 0.6rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .players-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .players-table tr:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .players-table tr.selected {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .players-table tr.sold {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #e74c3c;
+        }
+
+        .players-table tr.sold:hover {
+            background: rgba(231, 76, 60, 0.15);
+        }
+
+        .player-name-cell {
+            font-weight: 600;
+        }
+
+        .player-team {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .role-cell {
+            text-align: center;
+        }
+
+        .player-role-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .role-P {
+            background: var(--role-p-color);
+        }
+
+        .role-D {
+            background: var(--role-d-color);
+        }
+
+        .role-C {
+            background: var(--role-c-color);
+        }
+
+        .role-A {
+            background: var(--role-a-color);
+        }
+
+        .tier-cell,
+        .rating-cell,
+        .value-cell,
+        .titolarita-cell {
+            text-align: center;
+        }
+
+        .fantasy-tier {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            line-height: 24px;
+            font-weight: 700;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .stars {
+            color: #f1c40f;
+            font-size: 0.9rem;
+        }
+
+        .titolarita-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .titolarita-bar-mini {
+            width: 50px;
+            height: 6px;
+            background: var(--bg-tertiary);
+            border-radius: 3px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .titolarita-fill {
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        .titolarita-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: right;
+        }
+
+        .badges-cell {
+            text-align: center;
+        }
+
+        .mini-badge {
+            display: inline-block;
+            margin: 0 2px;
+            font-size: 0.8rem;
+        }
+
+        .status-cell {
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .available-status {
+            color: var(--success-color);
+        }
+
+        .sold-status {
+            color: var(--danger-color);
+        }
+
+        .rigorista-badge {
+            background: #e74c3c;
+            color: white;
+            font-weight: 700;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 50%;
+            margin-left: 0.5rem;
+            display: inline-block;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .sold-badge {
+            background: var(--danger-color);
+            color: white;
+            font-weight: 600;
+            font-size: 0.6rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            margin-left: 0.5rem;
+        }
+
+        .notes-cell {
+            max-width: 150px;
+        }
+
+        .player-note-text {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+            word-wrap: break-word;
+        }
+
+        .player-badges {
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+
+        /* Stili per elementi compatti */
+        .bidding-inline-controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .bid-input-mini {
+            width: 80px;
+            padding: 0.4rem 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 0.85rem;
+        }
+
+        .team-select-mini {
+            width: 120px;
+            padding: 0.4rem 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 0.85rem;
+        }
+
+        .assign-btn-mini {
+            padding: 0.4rem 0.8rem;
+            background: var(--gradient-success);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .quick-bid-mini {
+            padding: 0.4rem 0.6rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .role-badge-mini {
+            display: inline-block;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: white;
+            margin-left: 0.3rem;
+        }
+
+        .tier-mini {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            line-height: 18px;
+            text-align: center;
+            font-weight: 700;
+            color: white;
+            font-size: 0.7rem;
+            margin-left: 0.3rem;
+        }
+
+        .value-mini {
+            font-weight: 600;
+            margin-left: 0.3rem;
+        }
+
+        .rig-mini {
+            background: #e74c3c;
+            color: white;
+            font-weight: 700;
+            font-size: 0.6rem;
+            padding: 0.1rem 0.3rem;
+            border-radius: 50%;
+            margin-left: 0.3rem;
+        }
+
+        .team-mini {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.3rem;
+        }
+
+        .titolarita-mini {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.3rem;
+        }
+
+        .sold-info-inline {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.3rem;
+            padding: 0.3rem 0.5rem;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 4px;
+            border: 1px solid #e74c3c;
+        }
+
+        .sold-to-team {
+            font-weight: 600;
+            color: #e74c3c;
+            font-size: 0.8rem;
+        }
+
+        .undo-sale-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .undo-sale-btn:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+        }
+
+        /* Squadre compatte - ridimensionate per visualizzarne 8+ */
+        .teams-horizontal-container {
+            height: 220px;
+            /* Altezza ridotta */
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 0.5rem;
+        }
+
+        .teams-horizontal-grid {
+            display: flex;
+            gap: 0.4rem;
+            height: 100%;
+            padding: 0.3rem 0.2rem;
+        }
+
+        .team-card {
+            background: var(--bg-primary);
+            border-radius: 4px;
+            padding: 0.3rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+            min-width: 120px;
+            max-width: 140px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-size: 0.6rem;
+        }
+
+        .team-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .team-card.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: var(--secondary-color);
+            transform: scale(1.02);
+        }
+
+        .team-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.2rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .team-card.active .team-header {
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .team-name {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 60px;
+        }
+
+        .team-card.active .team-name {
+            color: white;
+        }
+
+        .budget-display {
+            text-align: right;
+        }
+
+        .budget-amount {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--success-color);
+            display: block;
+            line-height: 1;
+        }
+
+        .team-card.active .budget-amount {
+            color: white;
+        }
+
+        .budget-label {
+            color: var(--text-muted);
+            font-size: 0.5rem;
+        }
+
+        .team-card.active .budget-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .budget-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+            margin: 0.3rem 0;
+            overflow: hidden;
+        }
+
+        .team-card.active .budget-bar {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .budget-fill {
+            height: 100%;
+            background: var(--success-color);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .team-card.active .budget-fill {
+            background: white;
+        }
+
+        .team-players-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin: 0.3rem 0;
+            overflow-y: auto;
+            max-height: 75px;
+        }
+
+        .role-section {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.3rem;
+        }
+
+        .role-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .team-card.active .role-section {
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .role-label {
+            font-size: 0.55rem;
+            font-weight: 700;
+        }
+
+        .role-section-p .role-label {
+            color: var(--role-p-color);
+        }
+
+        .role-section-d .role-label {
+            color: var(--role-d-color);
+        }
+
+        .role-section-c .role-label {
+            color: var(--role-c-color);
+        }
+
+        .role-section-a .role-label {
+            color: var(--role-a-color);
+        }
+
+        .team-card.active .role-label {
+            color: white;
+        }
+
+        .role-count-badge {
+            color: white;
+            border-radius: 6px;
+            padding: 0.05rem 0.2rem;
+            font-size: 0.5rem;
+            font-weight: 600;
+            min-width: 14px;
+            text-align: center;
+        }
+
+        .role-section-p .role-count-badge {
+            background: var(--role-p-color);
+        }
+
+        .role-section-d .role-count-badge {
+            background: var(--role-d-color);
+        }
+
+        .role-section-c .role-count-badge {
+            background: var(--role-c-color);
+        }
+
+        .role-section-a .role-count-badge {
+            background: var(--role-a-color);
+        }
+
+        .team-card.active .role-count-badge {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .players-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .team-player-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.1rem 0.2rem;
+            background: var(--bg-tertiary);
+            border-radius: 2px;
+            font-size: 0.55rem;
+            transition: background 0.3s ease;
+        }
+
+        .team-player-item:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .team-card.active .team-player-item {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .team-player-item .player-name {
+            font-weight: 600;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 50px;
+        }
+
+        .team-player-item .player-price {
+            font-weight: 700;
+            color: var(--success-color);
+            font-size: 0.5rem;
+            margin-left: 0.1rem;
+        }
+
+        .team-card.active .team-player-item .player-price {
+            color: #90EE90;
+        }
+
+        .empty-role {
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 0.3rem;
+            font-size: 0.7rem;
+            /* Dimensione ridotta */
+        }
+
+        .team-summary {
+            margin-top: auto;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .team-card.active .team-summary {
+            border-top-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .summary-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.5rem;
+            margin-bottom: 0.2rem;
+            font-weight: 600;
+        }
+
+        .team-actions {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .team-action-btn {
+            flex: 1;
+            padding: 0.15rem 0.3rem;
+            border: none;
+            border-radius: 2px;
+            font-size: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .view-roster-btn {
+            background: var(--gradient-success);
+            color: white;
+        }
+
+        .remove-team-btn {
+            background: var(--gradient-danger);
+            color: white;
+        }
+
+        .team-action-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* PANNELLI SUPERIORI */
+        .fixed-panels {
+            background: var(--bg-primary);
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .filters-fixed {
+            padding: 0.75rem 2rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .auction-horizontal-fixed {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            gap: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .auction-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .auction-label {
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            white-space: nowrap;
+        }
+
+        .selected-player-inline {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+            flex: 1;
+        }
+
+        .bidding-section-inline {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Margine per contenuto principale */
+        .main-content {
+            padding: 1rem 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .players-main-section {
+            flex: 1;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .players-grid {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .table-container {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+        }
+
+        /* Miglioramento responsive */
+        @media (max-width: 1200px) {
+            .team-card {
+                min-width: 160px;
+                max-width: 180px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .teams-horizontal-container {
+                height: 200px;
+            }
+
+            .team-card {
+                min-width: 150px;
+                max-width: 170px;
+                font-size: 0.8rem;
+            }
+
+            .team-name {
+                font-size: 0.9rem;
+                max-width: 80px;
+            }
+
+            .budget-amount {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .players-table {
+                font-size: 0.8rem;
+            }
+
+            .players-table th,
+            .players-table td {
+                padding: 0.5rem 0.3rem;
+            }
+
+            .team-card {
+                min-width: 140px;
+                max-width: 160px;
+            }
+
+            .team-players-main {
+                max-height: 80px;
+            }
+
+            .team-player-item .player-name {
+                max-width: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1>⚽ FantaCassi - Gestionale Asta Serie A 2025/26</h1>
+            <div class="header-controls">
+                <button id="teams-view-btn" class="teams-view-btn">👥 Vista Squadre</button>
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+                <button id="export-btn" class="export-btn">📊 Esporta</button>
+                <button id="undo-btn" class="undo-btn">↶ Annulla</button>
+            </div>
+        </header>
+
+        <!-- PANNELLI FISSI IN ALTO -->
+        <div class="fixed-panels">
+            <!-- FILTRI FISSI -->
+            <div class="filters-fixed">
+                <div class="search-bar">
+                    <input type="text" id="player-search" placeholder="🔍 Cerca giocatore o squadra...">
+                </div>
+                <div class="filters">
+                    <select id="role-filter">
+                        <option value="">Tutti i ruoli</option>
+                        <option value="P">Portieri</option>
+                        <option value="D">Difensori</option>
+                        <option value="C">Centrocampisti</option>
+                        <option value="A">Attaccanti</option>
+                    </select>
+                    <select id="team-filter">
+                        <option value="">Tutte le squadre</option>
+                    </select>
+                    <select id="status-filter">
+                        <option value="">Tutti i giocatori</option>
+                        <option value="available">Disponibili</option>
+                        <option value="sold">Venduti</option>
+                        <option value="titolare">Solo titolari</option>
+                        <option value="rigorista">Solo rigoristi</option>
+                    </select>
+                    <select id="sort-filter">
+                        <option value="valore-desc">Valore (alto → basso)</option>
+                        <option value="valore-asc">Valore (basso → alto)</option>
+                        <option value="nome-asc">Nome A-Z</option>
+                        <option value="titolarita-desc">Titolarità</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- ASTA ORIZZONTALE FISSA -->
+            <div class="auction-horizontal-fixed">
+                <div class="auction-info">
+                    <span class="auction-label">🎯 Asta:</span>
+                    <div id="selected-player" class="selected-player-inline"></div>
+                </div>
+                <div id="bidding-section" class="bidding-section-inline"></div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- TABELLA GIOCATORI -->
+            <div class="players-main-section">
+                <div id="players-grid" class="players-grid"></div>
+            </div>
+
+            <!-- SEZIONE SQUADRE COMPATTA -->
+            <section class="teams-bottom-section">
+                <div class="teams-header">
+                    <div class="teams-title">
+                        <h2>🏆 Rose Squadre</h2>
+                        <div class="add-participant-inline">
+                            <input type="text" id="participant-name" placeholder="Nome squadra">
+                            <input type="number" id="participant-budget" placeholder="Budget" value="500">
+                            <button id="add-participant-btn">+ Aggiungi</button>
+                        </div>
+                    </div>
+                    <div id="auction-progress" class="auction-progress"></div>
+                </div>
+
+                <div class="teams-horizontal-container">
+                    <div id="teams-grid" class="teams-horizontal-grid"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISTA SQUADRE COMPLETA -->
+        <div id="teams-overview-page" class="teams-overview-page" style="display: none;">
+            <div class="teams-page-header">
+                <div class="page-title">
+                    <h1>🏆 Rose Complete delle Squadre</h1>
+                    <button id="back-to-auction-btn" class="back-btn">← Torna all'Asta</button>
+                </div>
+                <div class="teams-page-summary" id="teams-page-summary"></div>
+            </div>
+
+            <div id="teams-complete-view" class="teams-complete-view"></div>
+        </div>
+    </div>
+
+    <div id="auction-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="auction-content"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
