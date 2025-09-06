@@ -301,7 +301,7 @@ class FantaCalcioAuction {
                     filtered = filtered.filter(p => this.soldPlayers.has(p.id));
                     break;
                 case 'favorites':
-                    filtered = filtered.filter(p => this.favoriteePlayers.has(p.id));
+                    filtered = filtered.filter(p => this.favoritePlayers.has(p.id));
                     break;
                 case 'titolare':
                     filtered = filtered.filter(p => p.titolarita >= 60);
@@ -365,7 +365,7 @@ class FantaCalcioAuction {
         const playersHTML = playersToShow.map(player => {
             const isSold = this.soldPlayers.has(player.id);
             const isSelected = this.selectedPlayer && this.selectedPlayer.id === player.id;
-            const isFavorite = this.favoriteePlayers.has(player.id);
+            const isFavorite = this.favoritePlayers.has(player.id);
             const soldTo = isSold ? this.getSoldTo(player.id) : null;
             
             const qualityRatio = player.valore;
@@ -508,11 +508,11 @@ class FantaCalcioAuction {
         const player = this.players.find(p => p.id === playerId);
         if (!player) return;
         
-        if (this.favoriteePlayers.has(playerId)) {
-            this.favoriteePlayers.delete(playerId);
+        if (this.favoritePlayers.has(playerId)) {
+            this.favoritePlayers.delete(playerId);
             this.showNotification(`${player.nome} rimosso dai preferiti`, 'info');
         } else {
-            this.favoriteePlayers.add(playerId);
+            this.favoritePlayers.add(playerId);
             this.showNotification(`${player.nome} aggiunto ai preferiti`, 'success');
         }
         
@@ -1030,7 +1030,7 @@ class FantaCalcioAuction {
             participants: this.participants,
             auctionHistory: this.auctionHistory,
             soldPlayers: Array.from(this.soldPlayers),
-            favoriteePlayers: Array.from(this.favoriteePlayers),
+            favoritePlayers: Array.from(this.favoritePlayers),
             activeParticipant: this.activeParticipant ? this.activeParticipant.id : null
         };
         
@@ -1046,7 +1046,7 @@ class FantaCalcioAuction {
             this.participants = state.participants || [];
             this.auctionHistory = state.auctionHistory || [];
             this.soldPlayers = new Set(state.soldPlayers || []);
-            this.favoriteePlayers = new Set(state.favoriteePlayers || []);
+            this.favoritePlayers = new Set(state.favoritePlayers || []);
             
             if (state.activeParticipant) {
                 this.activeParticipant = this.participants.find(p => p.id === state.activeParticipant);
