@@ -26,7 +26,7 @@ class FantaCalcioAuction {
 
     async loadPlayersData() {
         try {
-            const response = await fetch('/json%20per%20claude%20code%20fantacalcio.json');
+            const response = await fetch('/api/players');
             const data = await response.json();
             
             this.players = [];
