@@ -208,12 +208,22 @@ class FantaCalcioAuction {
                         ${['P', 'D', 'C', 'A'].map(role => {
                             const players = playersByRole[role];
                             const roleNames = { P: 'POR', D: 'DIF', C: 'CEN', A: 'ATT' };
+                            const roleLimits = { P: 3, D: 8, C: 8, A: 6 };
+                            const currentCount = players.length;
+                            const limit = roleLimits[role];
+                            
+                            let badgeClass = 'role-count-badge';
+                            if (currentCount >= limit) {
+                                badgeClass += ' limit-reached';
+                            } else if (currentCount === limit - 1) {
+                                badgeClass += ' limit-warning';
+                            }
                             
                             return `
                                 <div class="role-section role-section-${role.toLowerCase()}">
                                     <div class="role-header">
                                         <span class="role-label">${roleNames[role]}</span>
-                                        <span class="role-count-badge">${players.length}</span>
+                                        <span class="${badgeClass}">${currentCount}/${limit}</span>
                                     </div>
                                     <div class="players-list">
                                         ${players.map(player => `
@@ -568,7 +578,7 @@ class FantaCalcioAuction {
         
         rating = Math.max(1, Math.min(5, rating));
         
-        return `<span class="stars">${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</span>`;
+        return `<span class="stars">${'<span class="star-filled">★</span>'.repeat(rating)}${'<span class="star-empty">☆</span>'.repeat(5 - rating)}</span>`;
     }
 
     placeBid() {
@@ -625,6 +635,27 @@ class FantaCalcioAuction {
             return;
         }
         
+        // Controllo limiti ruoli: 3P, 8D, 8C, 6A
+        const roleLimits = { P: 3, D: 8, C: 8, A: 6 };
+        const currentCount = winner.roleCount[this.selectedPlayer.ruolo];
+        const limit = roleLimits[this.selectedPlayer.ruolo];
+        
+        if (currentCount >= limit) {
+            this.showNotification(
+                `Limite massimo raggiunto per ${this.getRoleFullName(this.selectedPlayer.ruolo)} (${currentCount}/${limit})`, 
+                'warning'
+            );
+            return;
+        }
+        
+        // Avviso quando ci si avvicina al limite
+        if (currentCount === limit - 1) {
+            this.showNotification(
+                `⚠️ Ultimo slot disponibile per ${this.getRoleFullName(this.selectedPlayer.ruolo)} (${currentCount + 1}/${limit})`, 
+                'warning'
+            );
+        }
+        
         winner.budget -= bidAmount;
         winner.players.push({
             id: this.selectedPlayer.id,
@@ -671,7 +702,7 @@ class FantaCalcioAuction {
         container.innerHTML = `
             <div class="ai-rating">
                 <span>Rating:</span>
-                <span class="stars">${'★'.repeat(recommendation.rating)}${'☆'.repeat(5 - recommendation.rating)}</span>
+                <span class="stars">${'<span class="star-filled">★</span>'.repeat(recommendation.rating)}${'<span class="star-empty">☆</span>'.repeat(5 - recommendation.rating)}</span>
             </div>
             <div class="ai-advice">
                 <strong>Consiglio:</strong> ${recommendation.advice}
@@ -1077,26 +1108,55 @@ class FantaCalcioAuction {
                     ${['P', 'D', 'C', 'A'].map(role => {
                         const players = playersByRole[role];
                         const roleTotal = players.reduce((sum, p) => sum + p.prezzo, 0);
+                        const roleLimits = { P: 3, D: 8, C: 8, A: 6 };
+                        const currentCount = players.length;
+                        const limit = roleLimits[role];
+                        
+                        let countClass = 'complete-role-count';
+                        if (currentCount >= limit) {
+                            countClass += ' limit-reached';
+                        } else if (currentCount === limit - 1) {
+                            countClass += ' limit-warning';
+                        }
                         
                         return `
                             <div class="complete-role-section complete-role-${role.toLowerCase()}">
                                 <div class="complete-role-header">
                                     <span class="complete-role-title">${roleNames[role]}</span>
-                                    <span class="complete-role-count">${players.length} (${roleTotal})</span>
+                                    <span class="${countClass}">${currentCount}/${limit} (${roleTotal})</span>
                                 </div>
                                 <div class="complete-players-list">
-                                    ${players.length > 0 ? players.map(player => `
-                                        <div class="complete-player-item">
-                                            <div class="complete-player-info">
-                                                <div class="complete-player-name">${player.nome}</div>
-                                                <div class="complete-player-details">${player.squadra} • Valore: ${player.valore}</div>
+                                    ${(() => {
+                                        const roleLimits = { P: 3, D: 8, C: 8, A: 6 };
+                                        const maxSlots = roleLimits[role];
+                                        const playerItems = players.map(player => `
+                                            <div class="complete-player-item">
+                                                <div class="complete-player-info">
+                                                    <div class="complete-player-name">${player.nome}</div>
+                                                    <div class="complete-player-details">${player.squadra} • Valore: ${player.valore}</div>
+                                                </div>
+                                                <div class="complete-player-price">${player.prezzo}</div>
+                                                <button onclick="app.removePlayerFromTeam('${participant.id}', '${player.id}')" class="remove-player-btn">
+                                                    🗑️
+                                                </button>
                                             </div>
-                                            <div class="complete-player-price">${player.prezzo}</div>
-                                            <button onclick="app.removePlayerFromTeam('${participant.id}', '${player.id}')" class="remove-player-btn">
-                                                🗑️
-                                            </button>
-                                        </div>
-                                    `).join('') : '<div class="empty-role-message">Nessun giocatore in questo ruolo</div>'}
+                                        `);
+                                        
+                                        // Aggiungi slot vuoti per raggiungere il limite
+                                        for (let i = players.length; i < maxSlots; i++) {
+                                            playerItems.push(`
+                                                <div class="complete-player-item empty-slot">
+                                                    <div class="complete-player-info">
+                                                        <div class="complete-player-name">-</div>
+                                                        <div class="complete-player-details">Slot libero</div>
+                                                    </div>
+                                                    <div class="complete-player-price">-</div>
+                                                </div>
+                                            `);
+                                        }
+                                        
+                                        return playerItems.join('');
+                                    })()}
                                 </div>
                             </div>
                         `;
@@ -1176,6 +1236,16 @@ class FantaCalcioAuction {
         this.saveState();
 
         this.showNotification(`Squadra ${team.name} eliminata. Giocatori rilasciati.`, 'success');
+    }
+    
+    getRoleFullName(role) {
+        const roleNames = {
+            'P': 'Portieri',
+            'D': 'Difensori', 
+            'C': 'Centrocampisti',
+            'A': 'Attaccanti'
+        };
+        return roleNames[role] || role;
     }
 }
 

@@ -71,12 +71,12 @@
         {
           "nome": "Kolasinac",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 33,
+          "fantasyTier": "E",
+          "titolarita": 0,
           "rigorista": false,
-          "note": "In ballottaggio (33%), infortunato",
+          "note": "Fuori fino all'autunno per rottura del legamento crociato",
           "infortunato": true,
-          "valore": 8
+          "valore": 1
         },
         {
           "nome": "Ahanor",
@@ -189,10 +189,10 @@
         {
           "nome": "Lookman",
           "ruolo": "A",
-          "fantasyTier": "E",
-          "titolarita": 0,
+          "fantasyTier": "D",
+          "titolarita": 20,
           "rigorista": false,
-          "note": "In rotta con la società",
+          "note": "Possibile ballottaggio per un ruolo da titolare nel medio-lungo periodo, situazione da monitorare",
           "valore": 28
         },
         {
@@ -251,18 +251,18 @@
           "nome": "ZORTEA",
           "ruolo": "D",
           "fantasyTier": "C",
-          "titolarita": 34,
+          "titolarita": 60,
           "rigorista": false,
-          "note": "In ballottaggio con Holm e De Silvestri",
+          "note": "Favorito su Holm per la fascia destra",
           "valore": 8
         },
         {
           "nome": "Holm",
           "ruolo": "D",
           "fantasyTier": "D",
-          "titolarita": 33,
+          "titolarita": 25,
           "rigorista": false,
-          "note": "In ballottaggio con ZORTEA e De Silvestri",
+          "note": "Seconda scelta dopo Zortea",
           "valore": 7
         },
         {
@@ -296,28 +296,28 @@
           "nome": "Lucumi",
           "ruolo": "D",
           "fantasyTier": "D",
-          "titolarita": 55,
+          "titolarita": 40,
           "rigorista": false,
-          "note": "In ballottaggio avec Heggem",
+          "note": "In ballottaggio con Heggem",
           "valore": 8
         },
         {
           "nome": "Heggem",
           "ruolo": "D",
-          "fantasyTier": "E",
+          "fantasyTier": "D",
           "titolarita": 45,
           "rigorista": false,
-          "note": "In ballottaggio avec Lucumi",
-          "valore": 5
+          "note": "In ballottaggio con Lucumi, potrebbe insidiare la titolarità",
+          "valore": 6
         },
         {
           "nome": "VITIK",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 20,
+          "fantasyTier": "C",
+          "titolarita": 85,
           "rigorista": false,
-          "note": "Scommessa di Tuttofantacalcio",
-          "valore": 7
+          "note": "Centrale titolare, neo acquisto",
+          "valore": 9
         },
         {
           "nome": "Casale",
@@ -440,18 +440,19 @@
           "nome": "Castro",
           "ruolo": "A",
           "fantasyTier": "C",
-          "titolarita": 51,
+          "titolarita": 15,
           "rigorista": false,
-          "note": "In ballottaggio avec Immobile",
+          "note": "Vice Immobile, prima alternativa",
           "valore": 20
         },
         {
           "nome": "Immobile",
           "ruolo": "A",
           "fantasyTier": "C",
-          "titolarita": 49,
+          "titolarita": 85,
           "rigorista": true,
-          "note": "In ballottaggio avec Castro, possibile rigorista",
+          "note": "Centravanti titolare, fermo 2 mesi per infortunio al retto femorale",
+          "infortunato": true,
           "valore": 19
         },
         {
@@ -467,8 +468,8 @@
     },
     {
       "nome": "Cagliari",
-      "allenatore": "Fabio Pisacane",
-      "modulo": "4-3-1-2",
+      "allenatore": "Pisacane",
+      "modulo": "3-5-2",
       "giocatori": [
         {
           "nome": "Caprile",
@@ -491,38 +492,38 @@
         {
           "nome": "Zappa",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 51,
+          "fantasyTier": "C",
+          "titolarita": 100,
           "rigorista": false,
-          "note": "In ballottaggio avec Palestra",
-          "valore": 6
+          "note": "Titolare fisso",
+          "valore": 7
         },
         {
           "nome": "Palestra",
-          "ruolo": "D",
-          "fantasyTier": "E",
-          "titolarita": 49,
+          "ruolo": "C",
+          "fantasyTier": "C",
+          "titolarita": 100,
           "rigorista": false,
-          "note": "In ballottaggio avec Zappa",
-          "valore": 4
+          "note": "Titolare esterno sinistro",
+          "valore": 8
         },
         {
           "nome": "Obert",
           "ruolo": "D",
-          "fantasyTier": "E",
-          "titolarita": 34,
+          "fantasyTier": "D",
+          "titolarita": 55,
           "rigorista": false,
-          "note": "In ballottaggio avec Idrissi e Palestra",
-          "valore": 4
+          "note": "In ballottaggio con Idrissi per esterno sinistro",
+          "valore": 5
         },
         {
           "nome": "Idrissi R.",
           "ruolo": "D",
-          "fantasyTier": "E",
-          "titolarita": 33,
+          "fantasyTier": "D",
+          "titolarita": 45,
           "rigorista": false,
-          "note": "In ballottaggio avec Obert e Palestra",
-          "valore": 3
+          "note": "In ballottaggio con Obert per esterno sinistro",
+          "valore": 4
         },
         {
           "nome": "Mina",
@@ -609,9 +610,9 @@
           "nome": "Gaetano",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 100,
+          "titolarita": 35,
           "rigorista": true,
-          "note": "Titolare, battitore di calci piazzati",
+          "note": "In ballottaggio per un posto da trequartista, battitore di calci piazzati",
           "valore": 8
         },
         {
@@ -645,45 +646,45 @@
           "nome": "S. ESPOSITO",
           "ruolo": "A",
           "fantasyTier": "C",
-          "titolarita": 60,
+          "titolarita": 35,
           "rigorista": true,
-          "note": "In ballottaggio avec Luvumbo, rigorista",
+          "note": "In ballottaggio per un posto da trequartista/attaccante, rigorista",
           "valore": 15
         },
         {
           "nome": "Luvumbo",
           "ruolo": "A",
           "fantasyTier": "D",
-          "titolarita": 40,
+          "titolarita": 30,
           "rigorista": false,
-          "note": "In ballottaggio avec S. ESPOSITO",
+          "note": "In ballottaggio per un posto da trequartista/attaccante",
           "valore": 12
         },
         {
           "nome": "BELOTTI",
           "ruolo": "A",
-          "fantasyTier": "D",
-          "titolarita": 34,
+          "fantasyTier": "C",
+          "titolarita": 55,
           "rigorista": false,
-          "note": "In ballottaggio avec KILIÇSOY e BORRELLI",
-          "valore": 12
+          "note": "Favorito per il ruolo di centravanti titolare",
+          "valore": 15
         },
         {
           "nome": "KILIÇSOY",
           "ruolo": "A",
           "fantasyTier": "D",
-          "titolarita": 33,
+          "titolarita": 20,
           "rigorista": false,
-          "note": "In ballottaggio avec BELOTTI e BORRELLI",
+          "note": "Terza scelta per il centravanti",
           "valore": 11
         },
         {
           "nome": "BORRELLI",
           "ruolo": "A",
-          "fantasyTier": "E",
-          "titolarita": 33,
+          "fantasyTier": "D",
+          "titolarita": 25,
           "rigorista": false,
-          "note": "In ballottaggio avec BELOTTI e KILIÇSOY",
+          "note": "Seconda scelta per il centravanti",
           "valore": 10
         },
         {
@@ -786,38 +787,38 @@
         {
           "nome": "Vojvoda",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 34,
+          "fantasyTier": "C",
+          "titolarita": 100,
           "rigorista": false,
-          "note": "In ballottaggio con Van Der Brempt e Posch",
-          "valore": 7
+          "note": "Titolare fisso terzino destro",
+          "valore": 9
         },
         {
           "nome": "RAMON",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 55,
+          "fantasyTier": "C",
+          "titolarita": 100,
           "rigorista": false,
-          "note": "In ballottaggio con Diego Carlos",
-          "valore": 5
+          "note": "Titolare centrale, neo acquisto",
+          "valore": 7
         },
         {
           "nome": "Kempf",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 55,
+          "fantasyTier": "C",
+          "titolarita": 100,
           "rigorista": false,
-          "note": "In ballottaggio con Diego Carlos",
-          "valore": 6
+          "note": "Titolare centrale",
+          "valore": 8
         },
         {
           "nome": "Valle",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 51,
+          "fantasyTier": "C",
+          "titolarita": 100,
           "rigorista": false,
-          "note": "In ballottaggio con Moreno",
-          "valore": 6
+          "note": "Titolare fisso terzino sinistro",
+          "valore": 8
         },
         {
           "nome": "Moreno Alb.",
@@ -831,11 +832,11 @@
         {
           "nome": "Perrone",
           "ruolo": "C",
-          "fantasyTier": "D",
-          "titolarita": 34,
+          "fantasyTier": "C",
+          "titolarita": 55,
           "rigorista": false,
-          "note": "In ballottaggio con Sergi Roberto e Caqueret",
-          "valore": 8
+          "note": "Favorito su Caqueret per mediano",
+          "valore": 10
         },
         {
           "nome": "Da Cunha",
@@ -859,9 +860,9 @@
           "nome": "Caqueret",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 33,
+          "titolarita": 45,
           "rigorista": false,
-          "note": "In ballottaggio con Perrone e Sergi Roberto",
+          "note": "In ballottaggio con Perrone per mediano",
           "valore": 11
         },
         {
@@ -877,9 +878,9 @@
           "nome": "ADDAI",
           "ruolo": "A",
           "fantasyTier": "D",
-          "titolarita": 55,
+          "titolarita": 30,
           "rigorista": false,
-          "note": "In ballottaggio con Kühn",
+          "note": "In ballottaggio per esterno destro con Kühn",
           "valore": 13
         },
         {
@@ -903,29 +904,29 @@
         {
           "nome": "MORATA",
           "ruolo": "A",
-          "fantasyTier": "C",
-          "titolarita": 60,
+          "fantasyTier": "B",
+          "titolarita": 85,
           "rigorista": true,
-          "note": "In ballottaggio con Douvikas, rigorista",
-          "valore": 18
+          "note": "Attaccante titolare, neo acquisto, rigorista",
+          "valore": 22
         },
         {
           "nome": "Douvikas",
           "ruolo": "A",
           "fantasyTier": "D",
-          "titolarita": 40,
+          "titolarita": 15,
           "rigorista": false,
-          "note": "In ballottaggio con Morata",
+          "note": "Prima alternativa a Morata, possibile rimonta",
           "valore": 15
         },
         {
           "nome": "KÜHN",
           "ruolo": "A",
-          "fantasyTier": "D",
-          "titolarita": 45,
+          "fantasyTier": "C",
+          "titolarita": 70,
           "rigorista": false,
-          "note": "In ballottaggio con ADDAI",
-          "valore": 13
+          "note": "Favorito per esterno destro, in attesa di Diao e Addai",
+          "valore": 15
         },
         {
           "nome": "Diao",
@@ -1010,11 +1011,11 @@
         {
           "nome": "Ceccherini",
           "ruolo": "D",
-          "fantasyTier": "E",
-          "titolarita": 10,
+          "fantasyTier": "D",
+          "titolarita": 80,
           "rigorista": false,
-          "note": "Riserva",
-          "valore": 3
+          "note": "Titolare nella formazione base",
+          "valore": 5
         },
         {
           "nome": "Faye",
@@ -1047,10 +1048,10 @@
           "nome": "Sarmiento",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 20,
+          "titolarita": 35,
           "rigorista": false,
-          "note": "Riserva",
-          "valore": 7
+          "note": "In ballottaggio per una maglia da titolare",
+          "valore": 8
         },
         {
           "nome": "Valoti",
@@ -1210,7 +1211,7 @@
     {
       "nome": "Fiorentina",
       "allenatore": "Pioli",
-      "modulo": "3-5-1-1",
+      "modulo": "3-4-1-2",
       "giocatori": [
         {
           "nome": "De Gea",
@@ -1243,10 +1244,10 @@
           "nome": "Lamptey",
           "ruolo": "D",
           "fantasyTier": "D",
-          "titolarita": 20,
+          "titolarita": 30,
           "rigorista": false,
-          "note": "Riserva",
-          "valore": 6
+          "note": "Alternativa a Dodò sulla fascia destra",
+          "valore": 7
         },
         {
           "nome": "Fortini",
@@ -1260,11 +1261,11 @@
         {
           "nome": "Viti",
           "ruolo": "D",
-          "fantasyTier": "E",
-          "titolarita": 10,
+          "fantasyTier": "D",
+          "titolarita": 25,
           "rigorista": false,
-          "note": "Riserva",
-          "valore": 4
+          "note": "Prima alternativa a Ranieri",
+          "valore": 5
         },
         {
           "nome": "Parisi",
@@ -1305,20 +1306,20 @@
         {
           "nome": "Pongracic",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 60,
+          "fantasyTier": "C",
+          "titolarita": 75,
           "rigorista": false,
-          "note": "In ballottaggio con Mari",
-          "valore": 6
+          "note": "Titolare, agirà da centrale difensivo",
+          "valore": 7
         },
         {
           "nome": "Mari",
           "ruolo": "D",
           "fantasyTier": "E",
-          "titolarita": 40,
+          "titolarita": 25,
           "rigorista": false,
-          "note": "In ballottaggio con Pongracic",
-          "valore": 6
+          "note": "A rischio posto da titolare",
+          "valore": 5
         },
         {
           "nome": "Ranieri L.",
@@ -1360,10 +1361,10 @@
           "nome": "NICOLUSSI CAVIGLIA",
           "ruolo": "C",
           "fantasyTier": "C",
-          "titolarita": 60,
+          "titolarita": 45,
           "rigorista": false,
-          "note": "In ballottaggio con Fagioli, battitore di calci piazzati",
-          "valore": 9
+          "note": "Neo arrivato, in ballottaggio con Mandragora",
+          "valore": 8
         },
         {
           "nome": "Fagioli",
@@ -1378,9 +1379,9 @@
           "nome": "Mandragora",
           "ruolo": "C",
           "fantasyTier": "C",
-          "titolarita": 51,
+          "titolarita": 55,
           "rigorista": true,
-          "note": "In ballottaggio con Ndour, rigorista",
+          "note": "Favorito su Nicolussi Caviglia, rigorista",
           "valore": 15
         },
         {
@@ -1404,11 +1405,11 @@
         {
           "nome": "Dzeko",
           "ruolo": "A",
-          "fantasyTier": "C",
-          "titolarita": 25,
+          "fantasyTier": "B",
+          "titolarita": 40,
           "rigorista": true,
-          "note": "In ballottaggio con Gudmundsson e Fazzini",
-          "valore": 14
+          "note": "In ballottaggio con Piccoli, agirà con Kean",
+          "valore": 16
         },
         {
           "nome": "Fazzini",
@@ -1519,38 +1520,38 @@
         {
           "nome": "Norton-Cuffy",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 55,
+          "fantasyTier": "C",
+          "titolarita": 75,
           "rigorista": false,
-          "note": "In ballottaggio con Sabelli",
-          "valore": 4
+          "note": "Titolare al posto di Sabelli",
+          "valore": 5
         },
         {
           "nome": "Sabelli",
           "ruolo": "D",
           "fantasyTier": "E",
-          "titolarita": 45,
+          "titolarita": 25,
           "rigorista": false,
-          "note": "In ballottaggio con Norton-Cuffy",
-          "valore": 4
+          "note": "Riserva, sorpassato da Norton-Cuffy",
+          "valore": 3
         },
         {
           "nome": "OSTIGARD",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 55,
+          "fantasyTier": "C",
+          "titolarita": 80,
           "rigorista": false,
-          "note": "In ballottaggio con Marcandalli",
-          "valore": 5
+          "note": "Titolare, favorito su Marcandalli",
+          "valore": 6
         },
         {
           "nome": "MARCANDALLI",
           "ruolo": "D",
           "fantasyTier": "E",
-          "titolarita": 45,
+          "titolarita": 20,
           "rigorista": false,
-          "note": "In ballottaggio con Ostigard",
-          "valore": 4
+          "note": "Riserva, sorpassato da Ostigard",
+          "valore": 3
         },
         {
           "nome": "Vasquez",
@@ -1645,11 +1646,11 @@
         {
           "nome": "Ellertsson",
           "ruolo": "C",
-          "fantasyTier": "E",
-          "titolarita": 33,
+          "fantasyTier": "D",
+          "titolarita": 40,
           "rigorista": false,
-          "note": "In ballottaggio con Gronbæk e Venturino",
-          "valore": 6
+          "note": "Contenderà una maglia da titolare a Gronbaek",
+          "valore": 7
         },
         {
           "nome": "Venturino",
@@ -1663,20 +1664,20 @@
         {
           "nome": "COLOMBO",
           "ruolo": "A",
-          "fantasyTier": "D",
-          "titolarita": 60,
+          "fantasyTier": "C",
+          "titolarita": 75,
           "rigorista": true,
-          "note": "In ballottaggio con Vitinha",
-          "valore": 15
+          "note": "In netto vantaggio su Vitinha",
+          "valore": 17
         },
         {
           "nome": "Vitinha",
           "ruolo": "A",
           "fantasyTier": "D",
-          "titolarita": 40,
+          "titolarita": 25,
           "rigorista": false,
-          "note": "In ballottaggio con Colombo",
-          "valore": 13
+          "note": "Riserva, Colombo in vantaggio",
+          "valore": 11
         }
       ]
     },
@@ -1770,9 +1771,9 @@
           "nome": "Suslov",
           "ruolo": "C",
           "fantasyTier": "E",
-          "titolarita": 5,
+          "titolarita": 0,
           "rigorista": false,
-          "note": "Infortunato",
+          "note": "Rottura crociato, stagione compromessa",
           "infortunato": true,
           "valore": 4
         },
@@ -1958,19 +1959,19 @@
           "nome": "AKANJI",
           "ruolo": "D",
           "fantasyTier": "C",
-          "titolarita": 55,
+          "titolarita": 70,
           "rigorista": false,
-          "note": "In ballottaggio con Bisseck",
-          "valore": 8
+          "note": "Prenderà il posto di Pavard, favorito su Bisseck",
+          "valore": 9
         },
         {
           "nome": "Bisseck",
           "ruolo": "D",
           "fantasyTier": "D",
-          "titolarita": 45,
+          "titolarita": 30,
           "rigorista": false,
-          "note": "In ballottaggio con Akanji",
-          "valore": 8
+          "note": "Prima alternativa ad Akanji",
+          "valore": 7
         },
         {
           "nome": "De Vrij",
@@ -2066,19 +2067,19 @@
           "nome": "Mkhitaryan",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 33,
+          "titolarita": 27,
           "rigorista": false,
-          "note": "In ballottaggio con Frattesi e Sucic",
-          "valore": 9
+          "note": "Rischia il posto con Sucic nel lungo periodo",
+          "valore": 8
         },
         {
           "nome": "SUCIC",
           "ruolo": "C",
           "fantasyTier": "C",
-          "titolarita": 33,
+          "titolarita": 40,
           "rigorista": false,
-          "note": "In ballottaggio con Frattesi e Mkhitaryan, scommessa di Tuttofantacalcio",
-          "valore": 9
+          "note": "Sorpresa pronta a soffiare il posto a Mkhitaryan nel lungo periodo",
+          "valore": 10
         },
         {
           "nome": "LUIS HENRIQUE",
@@ -2261,10 +2262,10 @@
         {
           "nome": "Locatelli",
           "ruolo": "C",
-          "fantasyTier": "D",
-          "titolarita": 100,
+          "fantasyTier": "C",
+          "titolarita": 55,
           "rigorista": true,
-          "note": "Titolare, battitore di calci piazzati",
+          "note": "In ballottaggio con Koopmeiners, battitore di calci piazzati",
           "valore": 13
         },
         {
@@ -2288,19 +2289,19 @@
         {
           "nome": "ZHEGROVA",
           "ruolo": "C",
-          "fantasyTier": "D",
+          "fantasyTier": "C",
           "titolarita": 49,
           "rigorista": false,
-          "note": "In ballottaggio con Conceição",
+          "note": "Alla lunga potrebbe insidiare la titolarità di Conceição",
           "valore": 19
         },
         {
           "nome": "Koopmeiners",
           "ruolo": "C",
           "fantasyTier": "C",
-          "titolarita": 100,
+          "titolarita": 45,
           "rigorista": false,
-          "note": "Titolare, battitore di calci piazzati",
+          "note": "In ballottaggio con Locatelli, può insidiare il posto",
           "valore": 14
         },
         {
@@ -2352,10 +2353,10 @@
           "nome": "Vlahovic",
           "ruolo": "A",
           "fantasyTier": "B",
-          "titolarita": 20,
+          "titolarita": 30,
           "rigorista": true,
-          "note": "Riserva",
-          "valore": 26
+          "note": "Possibile rimonta dopo ottimo inizio stagione",
+          "valore": 28
         },
         {
           "nome": "Yildiz",
@@ -2395,10 +2396,10 @@
           "nome": "Mandas",
           "ruolo": "P",
           "fantasyTier": "C",
-          "titolarita": 51,
+          "titolarita": 45,
           "rigorista": false,
           "note": "In ballottaggio con Provedel",
-          "valore": 7
+          "valore": 6
         },
         {
           "nome": "Furlanetto",
@@ -2413,9 +2414,9 @@
           "nome": "Provedel",
           "ruolo": "P",
           "fantasyTier": "C",
-          "titolarita": 49,
+          "titolarita": 55,
           "rigorista": false,
-          "note": "In ballottaggio con Mandas",
+          "note": "Titolare nelle formazioni probabili",
           "valore": 7
         },
         {
@@ -2539,19 +2540,19 @@
           "nome": "Dele-Bashiru",
           "ruolo": "C",
           "fantasyTier": "C",
-          "titolarita": 55,
+          "titolarita": 65,
           "rigorista": false,
-          "note": "In ballottaggio con Vecino, scommessa di Tuttofantacalcio",
-          "valore": 11
+          "note": "Favorito su Vecino, stesso discorso di Castellanos",
+          "valore": 12
         },
         {
           "nome": "Vecino",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 45,
+          "titolarita": 35,
           "rigorista": false,
-          "note": "In ballottaggio con Dele-Bashiru",
-          "valore": 6
+          "note": "Dele-Bashiru favorito",
+          "valore": 5
         },
         {
           "nome": "Zaccagni",
@@ -2583,29 +2584,29 @@
         {
           "nome": "CANCELLIERI",
           "ruolo": "A",
-          "fantasyTier": "D",
-          "titolarita": 33,
+          "fantasyTier": "C",
+          "titolarita": 40,
           "rigorista": false,
-          "note": "In ballottaggio con Isaksen e Pedro",
-          "valore": 8
+          "note": "Indicato come prima scelta nelle probabili",
+          "valore": 9
         },
         {
           "nome": "Castellanos",
           "ruolo": "A",
           "fantasyTier": "B",
-          "titolarita": 60,
+          "titolarita": 70,
           "rigorista": true,
-          "note": "In ballottaggio con Dia",
-          "valore": 22
+          "note": "Nettamente favorito su Dia",
+          "valore": 24
         },
         {
           "nome": "Dia",
           "ruolo": "A",
           "fantasyTier": "C",
-          "titolarita": 40,
+          "titolarita": 30,
           "rigorista": false,
-          "note": "In ballottaggio con Castellanos",
-          "valore": 21
+          "note": "Castellanos resta nettamente favorito",
+          "valore": 19
         },
         {
           "nome": "Noslin",
@@ -2672,28 +2673,28 @@
           "nome": "Veiga D.",
           "ruolo": "D",
           "fantasyTier": "E",
-          "titolarita": 55,
+          "titolarita": 40,
           "rigorista": false,
-          "note": "In ballottaggio con Kouassi",
+          "note": "Kouassi indicato come favorito",
           "valore": 2
         },
         {
           "nome": "KOUASSI",
           "ruolo": "D",
-          "fantasyTier": "E",
-          "titolarita": 45,
+          "fantasyTier": "D",
+          "titolarita": 60,
           "rigorista": false,
-          "note": "In ballottaggio con Veiga D.",
-          "valore": 4
+          "note": "Indicato nelle formazioni probabili",
+          "valore": 5
         },
         {
           "nome": "SIEBERT",
           "ruolo": "D",
           "fantasyTier": "D",
-          "titolarita": 55,
+          "titolarita": 70,
           "rigorista": false,
-          "note": "In ballottaggio con Tiago Gabriel",
-          "valore": 4
+          "note": "Titolare nelle formazioni probabili",
+          "valore": 5
         },
         {
           "nome": "Tiago Gabriel",
@@ -2807,10 +2808,10 @@
           "nome": "Helgason",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 33,
+          "titolarita": 60,
           "rigorista": false,
-          "note": "In ballottaggio con Sala A. e Berisha",
-          "valore": 7
+          "note": "Titolare nelle formazioni probabili",
+          "valore": 9
         },
         {
           "nome": "Pierotti",
@@ -2834,10 +2835,10 @@
           "nome": "SOTTIL",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 34,
+          "titolarita": 45,
           "rigorista": false,
-          "note": "In ballottaggio con Banda e Tete Morente",
-          "valore": 10
+          "note": "Indicato come prima scelta nelle probabili",
+          "valore": 11
         },
         {
           "nome": "Banda",
@@ -2860,20 +2861,20 @@
         {
           "nome": "STULIC",
           "ruolo": "A",
-          "fantasyTier": "D",
-          "titolarita": 55,
+          "fantasyTier": "C",
+          "titolarita": 65,
           "rigorista": true,
-          "note": "In ballottaggio con Camarda",
-          "valore": 15
+          "note": "Favorito su Camarda secondo i consigli",
+          "valore": 17
         },
         {
           "nome": "CAMARDA",
           "ruolo": "A",
           "fantasyTier": "D",
-          "titolarita": 45,
+          "titolarita": 35,
           "rigorista": true,
-          "note": "In ballottaggio con Stulic, scommessa di Tuttofantacalcio",
-          "valore": 16
+          "note": "Pronto a subentrare, ex Milan",
+          "valore": 14
         },
         {
           "nome": "Rafia",
@@ -2949,10 +2950,10 @@
           "nome": "DE WINTER",
           "ruolo": "D",
           "fantasyTier": "D",
-          "titolarita": 45,
+          "titolarita": 50,
           "rigorista": false,
-          "note": "In ballottaggio con Tomori",
-          "valore": 7
+          "note": "Prima alternativa a Tomori",
+          "valore": 8
         },
         {
           "nome": "Gabbia",
@@ -3020,38 +3021,39 @@
         {
           "nome": "NKUNKU",
           "ruolo": "A",
-          "fantasyTier": "C",
-          "titolarita": 33,
+          "fantasyTier": "B",
+          "titolarita": 40,
           "rigorista": true,
-          "note": "In ballottaggio con Saelemaekers e Gimenez",
-          "valore": 20
+          "note": "Alternativa ad entrambi Pulisic e Leao",
+          "valore": 22
         },
         {
           "nome": "Gimenez",
           "ruolo": "A",
           "fantasyTier": "C",
-          "titolarita": 33,
+          "titolarita": 20,
           "rigorista": false,
-          "note": "In ballottaggio con Saelemaekers e Nkunku",
-          "valore": 24
+          "note": "Si giocherà le sue chance, ma parte indietro",
+          "valore": 22
         },
         {
           "nome": "Loftus-Cheek",
           "ruolo": "C",
-          "fantasyTier": "C",
-          "titolarita": 60,
+          "fantasyTier": "D",
+          "titolarita": 35,
           "rigorista": false,
-          "note": "In ballottaggio con Jashari",
-          "valore": 9
+          "note": "Si gioca il posto con Fofana al fianco di Rabiot e Modric",
+          "valore": 8
         },
         {
           "nome": "JASHARI",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 40,
+          "titolarita": 0,
           "rigorista": false,
-          "note": "In ballottaggio con Loftus-Cheek",
-          "valore": 12
+          "note": "Fuori 2 mesi per infortunio",
+          "valore": 8,
+          "infortunato": true
         },
         {
           "nome": "MODRIC",
@@ -3075,10 +3077,10 @@
           "nome": "RABIOT",
           "ruolo": "C",
           "fantasyTier": "B",
-          "titolarita": 55,
+          "titolarita": 65,
           "rigorista": false,
-          "note": "In ballottaggio con Fofana",
-          "valore": 23
+          "note": "Regalo di fine mercato, preferito a Loftus Cheek e Fofana",
+          "valore": 25
         },
         {
           "nome": "Fofana",
@@ -3130,7 +3132,7 @@
     {
       "nome": "Napoli",
       "allenatore": "Conte",
-      "modulo": "4-1-4-1",
+      "modulo": "4-3-3",
       "giocatori": [
         {
           "nome": "Meret",
@@ -3207,11 +3209,11 @@
         {
           "nome": "GUTIERREZ",
           "ruolo": "D",
-          "fantasyTier": "D",
-          "titolarita": 33,
+          "fantasyTier": "C",
+          "titolarita": 45,
           "rigorista": false,
-          "note": "In ballottaggio con Olivera e Spinazzola",
-          "valore": 7
+          "note": "Nel lungo periodo sarà preferito a Olivera e Spinazzola",
+          "valore": 8
         },
         {
           "nome": "Spinazzola",
@@ -3361,10 +3363,11 @@
           "nome": "Lukaku",
           "ruolo": "A",
           "fantasyTier": "D",
-          "titolarita": 10,
+          "titolarita": 0,
           "rigorista": false,
-          "note": "Riserva",
-          "valore": 30
+          "note": "Lungo infortunio",
+          "valore": 25,
+          "infortunato": true
         },
         {
           "nome": "AMBROSINO",
@@ -3379,7 +3382,7 @@
     },
     {
       "nome": "Parma",
-      "allenatore": "Cuesta",
+      "allenatore": "Carlos Cuesta",
       "modulo": "3-5-2",
       "giocatori": [
         {
@@ -3541,7 +3544,7 @@
           "fantasyTier": "D",
           "titolarita": 49,
           "rigorista": false,
-          "note": "In ballottaggio con Oristanio",
+          "note": "Prima alternativa a Pellegrino",
           "valore": 13
         },
         {
@@ -3585,9 +3588,9 @@
           "nome": "FRIGAN",
           "ruolo": "A",
           "fantasyTier": "E",
-          "titolarita": 5,
+          "titolarita": 0,
           "rigorista": false,
-          "note": "Riserva, infortunato",
+          "note": "Stagione finita (rottura crociato)",
           "infortunato": true,
           "valore": 9
         },
@@ -3683,18 +3686,18 @@
           "nome": "ALBIOL",
           "ruolo": "D",
           "fantasyTier": "D",
-          "titolarita": 55,
+          "titolarita": 100,
           "rigorista": false,
-          "note": "In ballottaggio con Caracciolo",
+          "note": "Titolare",
           "valore": 6
         },
         {
           "nome": "Caracciolo A.",
           "ruolo": "D",
           "fantasyTier": "E",
-          "titolarita": 45,
+          "titolarita": 0,
           "rigorista": false,
-          "note": "In ballottaggio con Albiol",
+          "note": "Riserva",
           "valore": 5
         },
         {
@@ -3942,16 +3945,16 @@
           "nome": "HERMOSO",
           "ruolo": "D",
           "fantasyTier": "D",
-          "titolarita": 34,
+          "titolarita": 60,
           "rigorista": false,
-          "note": "In ballottaggio con Celik e Ghilardi",
+          "note": "Favorito su Ghilardi e Celik",
           "valore": 4
         },
         {
           "nome": "Celik",
           "ruolo": "D",
           "fantasyTier": "E",
-          "titolarita": 33,
+          "titolarita": 20,
           "rigorista": false,
           "note": "In ballottaggio con Hermoso e Ghilardi",
           "valore": 6
@@ -3960,7 +3963,7 @@
           "nome": "GHILARDI",
           "ruolo": "D",
           "fantasyTier": "E",
-          "titolarita": 33,
+          "titolarita": 20,
           "rigorista": false,
           "note": "In ballottaggio con Hermoso e Celik",
           "valore": 4
@@ -4023,7 +4026,7 @@
           "nome": "EL AYNAOUI",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 51,
+          "titolarita": 40,
           "rigorista": false,
           "note": "In ballottaggio con Cristante",
           "valore": 9
@@ -4032,9 +4035,9 @@
           "nome": "Cristante",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 49,
+          "titolarita": 60,
           "rigorista": false,
-          "note": "In ballottaggio con El Aynaoui",
+          "note": "Favorito su El Aynaoui",
           "valore": 10
         },
         {
@@ -4071,22 +4074,23 @@
           "titolarita": 33,
           "rigorista": false,
           "note": "In ballottaggio con Dybala e El Shaarawy",
+          "infortunato": true,
           "valore": 15
         },
         {
           "nome": "FERGUSON",
           "ruolo": "A",
           "fantasyTier": "C",
-          "titolarita": 55,
+          "titolarita": 70,
           "rigorista": false,
-          "note": "In ballottaggio con Dovbyk, scommessa di Tuttofantacalcio",
+          "note": "Favorito su Dovbyk, scommessa di Tuttofantacalcio",
           "valore": 19
         },
         {
           "nome": "Dovbyk",
           "ruolo": "A",
           "fantasyTier": "D",
-          "titolarita": 45,
+          "titolarita": 30,
           "rigorista": true,
           "note": "In ballottaggio con Ferguson",
           "valore": 20
@@ -4147,7 +4151,7 @@
           "nome": "TURATI",
           "ruolo": "P",
           "fantasyTier": "D",
-          "titolarita": 51,
+          "titolarita": 40,
           "rigorista": false,
           "note": "In ballottaggio con Muric",
           "valore": 6
@@ -4164,10 +4168,10 @@
         {
           "nome": "MURIC",
           "ruolo": "P",
-          "fantasyTier": "E",
-          "titolarita": 49,
+          "fantasyTier": "D",
+          "titolarita": 60,
           "rigorista": false,
-          "note": "In ballottaggio con Turati",
+          "note": "Ha superato Turati nelle gerarchie",
           "valore": 5
         },
         {
@@ -4487,18 +4491,18 @@
           "nome": "Biraghi",
           "ruolo": "D",
           "fantasyTier": "C",
-          "titolarita": 100,
+          "titolarita": 55,
           "rigorista": false,
-          "note": "Titolare, battitore di calci piazzati",
+          "note": "In ballottaggio con Nkounkou, battitore di calci piazzati",
           "valore": 8
         },
         {
           "nome": "NKOUNKOU",
           "ruolo": "D",
-          "fantasyTier": "E",
-          "titolarita": 15,
+          "fantasyTier": "D",
+          "titolarita": 45,
           "rigorista": false,
-          "note": "Riserva",
+          "note": "In ballottaggio con Biraghi",
           "valore": 5
         },
         {
@@ -4605,7 +4609,7 @@
           "nome": "Zapata",
           "ruolo": "A",
           "fantasyTier": "B",
-          "titolarita": 55,
+          "titolarita": 40,
           "rigorista": true,
           "note": "In ballottaggio con Simeone, infortunato",
           "infortunato": true,
@@ -4614,10 +4618,10 @@
         {
           "nome": "SIMEONE",
           "ruolo": "A",
-          "fantasyTier": "D",
-          "titolarita": 45,
+          "fantasyTier": "C",
+          "titolarita": 60,
           "rigorista": false,
-          "note": "In ballottaggio con Zapata",
+          "note": "Favorito su Zapata",
           "valore": 15
         },
         {
@@ -4641,10 +4645,10 @@
         {
           "nome": "NGONGE",
           "ruolo": "A",
-          "fantasyTier": "D",
-          "titolarita": 20,
+          "fantasyTier": "C",
+          "titolarita": 100,
           "rigorista": false,
-          "note": "Riserva",
+          "note": "Titolare esterno destro",
           "valore": 10
         },
         {
@@ -4802,16 +4806,16 @@
           "nome": "PIOTROWSKI",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 51,
+          "titolarita": 70,
           "rigorista": false,
-          "note": "In ballottaggio con Lovric",
+          "note": "Favorito su Lovric per la regia",
           "valore": 6
         },
         {
           "nome": "Lovric",
           "ruolo": "C",
           "fantasyTier": "D",
-          "titolarita": 49,
+          "titolarita": 30,
           "rigorista": true,
           "note": "In ballottaggio con Piotrowski, battitore di calci piazzati",
           "valore": 9
