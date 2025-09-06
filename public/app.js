@@ -7,6 +7,7 @@ class FantaCalcioAuction {
         this.activeParticipant = null;
         this.auctionHistory = [];
         this.soldPlayers = new Set();
+        this.favoritePlayers = new Set();
         this.theme = localStorage.getItem('theme') || 'light';
         this.currentPage = 1;
         this.playersPerPage = 25;
@@ -26,7 +27,7 @@ class FantaCalcioAuction {
 
     async loadPlayersData() {
         try {
-            const response = await fetch('/api/players');
+            const response = await fetch('players-data.json');
             const data = await response.json();
             
             this.players = [];
@@ -299,6 +300,9 @@ class FantaCalcioAuction {
                 case 'sold':
                     filtered = filtered.filter(p => this.soldPlayers.has(p.id));
                     break;
+                case 'favorites':
+                    filtered = filtered.filter(p => this.favoriteePlayers.has(p.id));
+                    break;
                 case 'titolare':
                     filtered = filtered.filter(p => p.titolarita >= 60);
                     break;
@@ -345,6 +349,7 @@ class FantaCalcioAuction {
             <table class="players-table">
                 <thead>
                     <tr>
+                        <th>♥</th>
                         <th>Giocatore</th>
                         <th>Ruolo</th>
                         <th>Tier</th>
@@ -360,6 +365,7 @@ class FantaCalcioAuction {
         const playersHTML = playersToShow.map(player => {
             const isSold = this.soldPlayers.has(player.id);
             const isSelected = this.selectedPlayer && this.selectedPlayer.id === player.id;
+            const isFavorite = this.favoriteePlayers.has(player.id);
             const soldTo = isSold ? this.getSoldTo(player.id) : null;
             
             const qualityRatio = player.valore;
@@ -371,6 +377,11 @@ class FantaCalcioAuction {
             return `
                 <tr class="player-row ${isSold ? 'sold' : ''} ${isSelected ? 'selected' : ''}" 
                     onclick="app.selectPlayer('${player.id}')">
+                    <td class="favorite-cell" onclick="event.stopPropagation(); app.toggleFavorite('${player.id}')">
+                        <button class="favorite-btn ${isFavorite ? 'favorited' : ''}">
+                            ${isFavorite ? '♥' : '♡'}
+                        </button>
+                    </td>
                     <td class="player-name-cell">
                         <div class="player-name">
                             ${player.nome}
@@ -491,6 +502,22 @@ class FantaCalcioAuction {
         this.renderPlayers();
         this.currentBids = [];
         this.renderBidding();
+    }
+
+    toggleFavorite(playerId) {
+        const player = this.players.find(p => p.id === playerId);
+        if (!player) return;
+        
+        if (this.favoriteePlayers.has(playerId)) {
+            this.favoriteePlayers.delete(playerId);
+            this.showNotification(`${player.nome} rimosso dai preferiti`, 'info');
+        } else {
+            this.favoriteePlayers.add(playerId);
+            this.showNotification(`${player.nome} aggiunto ai preferiti`, 'success');
+        }
+        
+        this.renderPlayers();
+        this.saveState();
     }
 
     renderSelectedPlayer() {
@@ -1003,6 +1030,7 @@ class FantaCalcioAuction {
             participants: this.participants,
             auctionHistory: this.auctionHistory,
             soldPlayers: Array.from(this.soldPlayers),
+            favoriteePlayers: Array.from(this.favoriteePlayers),
             activeParticipant: this.activeParticipant ? this.activeParticipant.id : null
         };
         
@@ -1018,6 +1046,7 @@ class FantaCalcioAuction {
             this.participants = state.participants || [];
             this.auctionHistory = state.auctionHistory || [];
             this.soldPlayers = new Set(state.soldPlayers || []);
+            this.favoriteePlayers = new Set(state.favoriteePlayers || []);
             
             if (state.activeParticipant) {
                 this.activeParticipant = this.participants.find(p => p.id === state.activeParticipant);

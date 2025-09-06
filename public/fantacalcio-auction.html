@@ -356,6 +356,36 @@
             transform: scale(1.1);
         }
 
+        /* Stili per i pulsanti preferiti */
+        .favorite-cell {
+            text-align: center;
+            width: 40px;
+        }
+
+        .favorite-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.2rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            color: #ccc;
+        }
+
+        .favorite-btn:hover {
+            background: rgba(231, 76, 60, 0.1);
+            transform: scale(1.1);
+        }
+
+        .favorite-btn.favorited {
+            color: #e74c3c;
+        }
+
+        .favorite-btn.favorited:hover {
+            color: #c0392b;
+        }
+
         /* Squadre compatte - ridimensionate per visualizzarne 8+ */
         .teams-horizontal-container {
             height: 220px;
@@ -841,6 +871,7 @@
                         <option value="">Tutti i giocatori</option>
                         <option value="available">Disponibili</option>
                         <option value="sold">Venduti</option>
+                        <option value="favorites">♥ Preferiti</option>
                         <option value="titolare">Solo titolari</option>
                         <option value="rigorista">Solo rigoristi</option>
                     </select>
