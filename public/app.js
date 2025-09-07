@@ -1162,7 +1162,6 @@ class FantaCalcioAuction {
                                             <div class="complete-player-item">
                                                 <div class="complete-player-info">
                                                     <div class="complete-player-name">${player.nome}</div>
-                                                    <div class="complete-player-details">${player.squadra} • Valore: ${player.valore}</div>
                                                 </div>
                                                 <div class="complete-player-price">${player.prezzo}</div>
                                                 <button onclick="app.removePlayerFromTeam('${participant.id}', '${player.id}')" class="remove-player-btn">
@@ -1177,7 +1176,6 @@ class FantaCalcioAuction {
                                                 <div class="complete-player-item empty-slot">
                                                     <div class="complete-player-info">
                                                         <div class="complete-player-name">-</div>
-                                                        <div class="complete-player-details">Slot libero</div>
                                                     </div>
                                                     <div class="complete-player-price">-</div>
                                                 </div>
