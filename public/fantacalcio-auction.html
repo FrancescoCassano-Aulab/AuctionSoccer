@@ -422,19 +422,40 @@
         /* Squadre compatte - ridimensionate per visualizzarne 8+ */
         .teams-horizontal-container {
             height: 220px;
-            /* Altezza ridotta */
             overflow-x: auto;
             overflow-y: hidden;
             padding-bottom: 0.5rem;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Stili per la scrollbar orizzontale */
+        .teams-horizontal-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .teams-horizontal-container::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+        }
+
+        .teams-horizontal-container::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .teams-horizontal-container::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
         }
 
         .teams-horizontal-grid {
-            display: flex;
+            display: inline-flex;
             gap: 0.4rem;
             height: 100%;
             padding: 0.3rem 0.2rem;
             flex-wrap: nowrap;
-            min-width: min-content;
+            width: max-content;
+            min-width: 100%;
         }
 
         .team-card {
