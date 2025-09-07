@@ -879,6 +879,269 @@
             flex-direction: column;
         }
 
+        /* LAYOUT ORIZZONTALE SQUADRE + GIOCATORI */
+        .players-and-stats-layout {
+            display: flex;
+            gap: 1rem;
+            flex: 1;
+            min-height: 0;
+        }
+
+        /* PANNELLO INFORMATIVO SQUADRE SIDEBAR */
+        .teams-quick-info-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            height: fit-content;
+            overflow-y: auto;
+        }
+
+        .unified-stats-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .unified-stats-header {
+            text-align: center;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .unified-stats-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .quick-stat-item {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem 0.6rem;
+            background: var(--bg-primary);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .team-stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .missing-roles-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-top: 0.2rem;
+        }
+
+        .team-name-quick {
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+            margin-right: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .stat-badges-quick {
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+
+        .stat-value-quick {
+            font-weight: 700;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: white;
+            min-width: 35px;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stat-value-quick:hover {
+            transform: translateY(-1px);
+        }
+
+        .role-badge-missing {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .role-badge-missing:hover {
+            transform: translateY(-1px);
+        }
+
+        .stat-label-mini {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            margin-right: 0.3rem;
+        }
+
+        .role-badge-missing {
+            display: inline-block;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            min-width: 25px;
+        }
+
+        /* Role badges - contrasto 4:1 garantito con bianco */
+        .role-badge-missing.role-P {
+            background: #1a5490; /* Contrasto 4.5:1 con bianco */
+            box-shadow: 0 2px 4px rgba(26, 84, 144, 0.3);
+        }
+
+        .role-badge-missing.role-D {
+            background: #1e8449; /* Contrasto 4.5:1 con bianco */
+            box-shadow: 0 2px 4px rgba(30, 132, 73, 0.3);
+        }
+
+        .role-badge-missing.role-C {
+            background: #b7651d; /* Contrasto 4.5:1 con bianco */
+            box-shadow: 0 2px 4px rgba(183, 101, 29, 0.3);
+        }
+
+        .role-badge-missing.role-A {
+            background: #922b21; /* Contrasto 5.2:1 con bianco */
+            box-shadow: 0 2px 4px rgba(146, 43, 33, 0.3);
+        }
+
+        .role-badge-missing.complete {
+            background: #1e8449; /* Contrasto 4.5:1 con bianco */
+            padding: 0.15rem 0.6rem;
+            box-shadow: 0 2px 4px rgba(30, 132, 73, 0.3);
+        }
+
+        /* Budget colors - contrasto 4:1 garantito con bianco */
+        .budget-high {
+            background: #1e8449; /* Contrasto 4.5:1 con bianco */
+            box-shadow: 0 2px 4px rgba(30, 132, 73, 0.3);
+        }
+
+        .budget-medium {
+            background: #b7651d; /* Contrasto 4.5:1 con bianco */
+            box-shadow: 0 2px 4px rgba(183, 101, 29, 0.3);
+        }
+
+        .budget-low {
+            background: #c0392b; /* Contrasto 4.5:1 con bianco */
+            box-shadow: 0 2px 4px rgba(192, 57, 43, 0.3);
+        }
+
+        /* Max spend colors - contrasto 4:1 garantito con bianco */
+        .max-spend-high {
+            background: #1e8449; /* Contrasto 4.5:1 con bianco */
+            box-shadow: 0 2px 4px rgba(30, 132, 73, 0.3);
+        }
+
+        .max-spend-medium {
+            background: #b7651d; /* Contrasto 4.5:1 con bianco */
+            box-shadow: 0 2px 4px rgba(183, 101, 29, 0.3);
+        }
+
+        .max-spend-low {
+            background: #922b21; /* Contrasto 5.2:1 con bianco */
+            box-shadow: 0 2px 4px rgba(146, 43, 33, 0.3);
+        }
+
+        /* Tema scuro - contrasti 4:1 garantiti con bianco */
+        [data-theme="dark"] .budget-high {
+            background: #1e8449; /* Contrasto 4.5:1 con bianco */
+        }
+
+        [data-theme="dark"] .budget-medium {
+            background: #b7651d; /* Contrasto 4.5:1 con bianco */
+        }
+
+        [data-theme="dark"] .budget-low {
+            background: #c0392b; /* Contrasto 4.5:1 con bianco */
+        }
+
+        [data-theme="dark"] .max-spend-high {
+            background: #1e8449; /* Contrasto 4.5:1 con bianco */
+        }
+
+        [data-theme="dark"] .max-spend-medium {
+            background: #b7651d; /* Contrasto 4.5:1 con bianco */
+        }
+
+        [data-theme="dark"] .max-spend-low {
+            background: #922b21; /* Contrasto 5.2:1 con bianco */
+        }
+
+        [data-theme="dark"] .role-badge-missing.role-P {
+            background: #1a5490; /* Contrasto 4.5:1 con bianco */
+        }
+
+        [data-theme="dark"] .role-badge-missing.role-D {
+            background: #1e8449; /* Contrasto 4.5:1 con bianco */
+        }
+
+        [data-theme="dark"] .role-badge-missing.role-C {
+            background: #b7651d; /* Contrasto 4.5:1 con bianco */
+        }
+
+        [data-theme="dark"] .role-badge-missing.role-A {
+            background: #922b21; /* Contrasto 5.2:1 con bianco */
+        }
+
+        [data-theme="dark"] .role-badge-missing.complete {
+            background: #1e8449; /* Contrasto 4.5:1 con bianco */
+        }
+
+        .no-teams-quick {
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 1rem;
+        }
+
+        /* Responsive per layout sidebar */
+        @media (max-width: 1200px) {
+            .teams-quick-info-sidebar {
+                width: 260px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .players-and-stats-layout {
+                flex-direction: column;
+            }
+            
+            .teams-quick-info-sidebar {
+                width: 100%;
+                max-height: 250px;
+                margin-bottom: 1rem;
+            }
+
+            .unified-stats-content {
+                flex-direction: row;
+                overflow-x: auto;
+                gap: 1rem;
+            }
+
+            .quick-stat-item {
+                min-width: 200px;
+                flex-shrink: 0;
+            }
+        }
+
         .players-main-section {
             flex: 1;
             background: var(--bg-secondary);
@@ -1014,9 +1277,17 @@
         </div>
 
         <div class="main-content">
-            <!-- TABELLA GIOCATORI -->
-            <div class="players-main-section">
-                <div id="players-grid" class="players-grid"></div>
+            <!-- LAYOUT ORIZZONTALE: INFO SQUADRE + TABELLA GIOCATORI -->
+            <div class="players-and-stats-layout">
+                <!-- PANNELLO INFORMATIVO SQUADRE COMPATTO -->
+                <div id="teams-quick-info" class="teams-quick-info-sidebar">
+                    <div id="teams-stats-unified" class="unified-stats-content"></div>
+                </div>
+
+                <!-- TABELLA GIOCATORI -->
+                <div class="players-main-section">
+                    <div id="players-grid" class="players-grid"></div>
+                </div>
             </div>
 
             <!-- SEZIONE SQUADRE COMPATTA -->

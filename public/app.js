@@ -23,6 +23,7 @@ class FantaCalcioAuction {
         this.renderPlayers();
         this.renderParticipants();
         this.populateTeamFilter();
+        this.renderTeamsQuickInfo();
     }
 
     async loadPlayersData() {
@@ -118,6 +119,7 @@ class FantaCalcioAuction {
         
         this.participants.push(participant);
         this.renderParticipants();
+        this.renderTeamsQuickInfo();
         this.saveState();
         
         nameInput.value = '';
@@ -142,6 +144,7 @@ class FantaCalcioAuction {
         
         this.renderParticipants();
         this.renderPlayers();
+        this.renderTeamsQuickInfo();
         this.saveState();
         
         this.showNotification(`Squadra ${participant.name} rimossa`, 'success');
@@ -269,6 +272,103 @@ class FantaCalcioAuction {
                 teamsGrid.style.width = `${totalWidth}px`;
             }
         }, 100);
+    }
+
+    renderTeamsQuickInfo() {
+        const container = document.getElementById('teams-stats-unified');
+
+        if (this.participants.length === 0) {
+            container.innerHTML = `
+                <div class="unified-stats-header">
+                    <h3 class="unified-stats-title">📊 Statistiche Squadre</h3>
+                </div>
+                <div class="no-teams-quick">Nessuna squadra creata</div>
+            `;
+            return;
+        }
+
+        // Calcola statistiche per ogni squadra
+        const teamStats = this.participants.map(team => {
+            const roleLimits = { P: 3, D: 8, C: 8, A: 6 };
+            const totalSlots = Object.values(roleLimits).reduce((sum, limit) => sum + limit, 0);
+            const currentPlayers = team.players.length;
+            const remainingSlots = totalSlots - currentPlayers;
+            
+            // Calcola giocatori mancanti per ruolo
+            const missingByRole = {
+                P: Math.max(0, roleLimits.P - team.roleCount.P),
+                D: Math.max(0, roleLimits.D - team.roleCount.D),
+                C: Math.max(0, roleLimits.C - team.roleCount.C),
+                A: Math.max(0, roleLimits.A - team.roleCount.A)
+            };
+            
+            const totalMissing = Object.values(missingByRole).reduce((sum, missing) => sum + missing, 0);
+            
+            // Calcola massimo spendibile per giocatore (lasciando 1€ per ogni giocatore rimanente)
+            const maxSpendPerPlayer = totalMissing > 1 ? 
+                Math.max(1, team.budget - (totalMissing - 1)) : 
+                team.budget;
+
+            return {
+                ...team,
+                totalMissing,
+                missingByRole,
+                maxSpendPerPlayer,
+                remainingSlots
+            };
+        });
+
+        // Ordina per budget (decrescente) e prendi top 8
+        const sortedTeams = [...teamStats].sort((a, b) => b.budget - a.budget).slice(0, 8);
+
+        // Header
+        let html = `
+            <div class="unified-stats-header">
+                <h3 class="unified-stats-title">📊 Statistiche Squadre</h3>
+            </div>
+        `;
+
+        // Render unified stats per ogni squadra
+        html += sortedTeams.map(team => {
+            // Budget class
+            let budgetClass = 'budget-low';
+            if (team.budget > 100) budgetClass = 'budget-high';
+            else if (team.budget > 50) budgetClass = 'budget-medium';
+
+            // Max spend class
+            let spendClass = 'max-spend-low';
+            if (team.maxSpendPerPlayer > 50) spendClass = 'max-spend-high';
+            else if (team.maxSpendPerPlayer > 20) spendClass = 'max-spend-medium';
+
+            // Genera i badge per ruoli mancanti
+            let missingRolesHTML = '';
+            if (team.totalMissing === 0) {
+                missingRolesHTML = '<span class="role-badge-missing complete">✓ Completa</span>';
+            } else {
+                const roles = ['P', 'D', 'C', 'A'];
+                missingRolesHTML = roles
+                    .filter(role => team.missingByRole[role] > 0)
+                    .map(role => `<span class="role-badge-missing role-${role}">${role}:${team.missingByRole[role]}</span>`)
+                    .join('');
+            }
+
+            return `
+                <div class="quick-stat-item">
+                    <div class="team-stat-row">
+                        <span class="team-name-quick">${team.name}</span>
+                        <div class="stat-badges-quick">
+                            <span class="stat-value-quick ${budgetClass}" title="Budget rimanente">${team.budget}</span>
+                            <span class="stat-value-quick ${spendClass}" title="Max spendibile per giocatore">${team.maxSpendPerPlayer}</span>
+                        </div>
+                    </div>
+                    <div class="missing-roles-detail">
+                        ${missingRolesHTML}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        container.innerHTML = html;
     }
 
     populateTeamFilter() {
@@ -723,6 +823,7 @@ class FantaCalcioAuction {
         this.renderBidding();
         this.renderPlayers();
         this.renderParticipants();
+        this.renderTeamsQuickInfo();
         this.saveState();
     }
 
@@ -959,6 +1060,7 @@ class FantaCalcioAuction {
         this.renderParticipants();
         this.renderPlayers();
         this.renderTeamsOverview();
+        this.renderTeamsQuickInfo();
         this.saveState();
         
         this.showNotification(`Annullata vendita di ${lastAuction.player.nome}`, 'success');
@@ -984,6 +1086,7 @@ class FantaCalcioAuction {
         this.renderParticipants();
         this.renderPlayers();
         this.renderTeamsOverview();
+        this.renderTeamsQuickInfo();
         this.saveState();
 
         this.showNotification(`Annullata vendita di ${auction.player.nome}`, 'success');
@@ -1294,6 +1397,7 @@ class FantaCalcioAuction {
         this.renderTeamsOverviewPage();
         this.renderParticipants();
         this.renderPlayers();
+        this.renderTeamsQuickInfo();
         this.saveState();
         
         this.showNotification(`${removedPlayer.nome} rimosso da ${team.name}. Budget rimborsato: ${removedPlayer.prezzo}`, 'success');
@@ -1329,6 +1433,7 @@ class FantaCalcioAuction {
         this.renderTeamsOverviewPage();
         this.renderParticipants();
         this.renderPlayers();
+        this.renderTeamsQuickInfo();
         this.saveState();
 
         this.showNotification(`Squadra ${team.name} eliminata. Giocatori rilasciati.`, 'success');
