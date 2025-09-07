@@ -258,6 +258,17 @@ class FantaCalcioAuction {
                 </div>
             `;
         }).join('');
+        
+        // Force horizontal scroll by setting grid width (table mode)
+        setTimeout(() => {
+            const teamsGrid = document.getElementById('teams-grid');
+            if (teamsGrid && this.participants.length > 0) {
+                const teamCardWidth = 140; // Fixed width from CSS
+                const gap = 0.4 * 16; // border-spacing converted to px
+                const totalWidth = (this.participants.length * teamCardWidth) + ((this.participants.length + 1) * gap);
+                teamsGrid.style.width = `${totalWidth}px`;
+            }
+        }, 100);
     }
 
     populateTeamFilter() {
@@ -1102,11 +1113,13 @@ class FantaCalcioAuction {
         `;
 
         // Teams with complete rosters
-        teamsContainer.innerHTML = this.participants.map(participant => {
+        const teamsGrid = `
+            <div class="complete-teams-grid">
+                ${this.participants.map(participant => {
             const spentAmount = participant.initialBudget - participant.budget;
             const avgPrice = participant.players.length > 0 ? Math.round(spentAmount / participant.players.length) : 0;
 
-            const roleNames = { P: 'Portieri', D: 'Difensori', C: 'Centrocampisti', A: 'Attaccanti' };
+            const roleNames = { P: 'Portieri', D: 'Difensori', C: 'Centrocampo', A: 'Attaccanti' };
             const playersByRole = {
                 P: participant.players.filter(p => p.ruolo === 'P'),
                 D: participant.players.filter(p => p.ruolo === 'D'),
@@ -1115,7 +1128,7 @@ class FantaCalcioAuction {
             };
 
             return `
-                <div class="complete-team-card">
+                <div class="complete-team-column">
                     <div class="complete-team-header">
                         <div class="complete-team-name">${participant.name}</div>
                         <div class="complete-team-stats">
@@ -1134,6 +1147,7 @@ class FantaCalcioAuction {
                         </div>
                     </div>
 
+                    <div class="complete-team-card">
                     ${['P', 'D', 'C', 'A'].map(role => {
                         const players = playersByRole[role];
                         const roleTotal = players.reduce((sum, p) => sum + p.prezzo, 0);
@@ -1164,9 +1178,6 @@ class FantaCalcioAuction {
                                                     <div class="complete-player-name">${player.nome}</div>
                                                 </div>
                                                 <div class="complete-player-price">${player.prezzo}</div>
-                                                <button onclick="app.removePlayerFromTeam('${participant.id}', '${player.id}')" class="remove-player-btn">
-                                                    🗑️
-                                                </button>
                                             </div>
                                         `);
                                         
@@ -1194,9 +1205,67 @@ class FantaCalcioAuction {
                             🗑️ Elimina Squadra
                         </button>
                     </div>
+                    </div>
                 </div>
             `;
-        }).join('');
+        }).join('')}
+            </div>
+        `;
+        
+        teamsContainer.innerHTML = teamsGrid;
+        
+        // Force horizontal scroll for complete teams view
+        setTimeout(() => {
+            const completeTeamsGrid = teamsContainer.querySelector('.complete-teams-grid');
+            if (completeTeamsGrid && this.participants.length > 0) {
+                const teamCardWidth = 240; // Fixed width from CSS
+                const gap = 16; // 1rem gap between columns
+                const totalWidth = (this.participants.length * (teamCardWidth + gap)) + 32; // 32px per padding
+                completeTeamsGrid.style.width = `${Math.max(totalWidth, window.innerWidth)}px`;
+            }
+            
+            // Setup sticky headers with JavaScript
+            this.setupStickyHeaders();
+        }, 100);
+    }
+
+    setupStickyHeaders() {
+        const teamsCompleteView = document.querySelector('.teams-complete-view');
+        const headers = document.querySelectorAll('.complete-team-header');
+        
+        if (!teamsCompleteView || headers.length === 0) return;
+        
+        const handleScroll = () => {
+            const containerRect = teamsCompleteView.getBoundingClientRect();
+            const scrollTop = teamsCompleteView.scrollTop;
+            const scrollLeft = teamsCompleteView.scrollLeft;
+            
+            headers.forEach((header, index) => {
+                const column = header.closest('.complete-team-column');
+                if (!column) return;
+                
+                // Calculate column position accounting for scroll
+                const baseLeft = (index * 256) + 16; // 240px width + 16px margin
+                const adjustedLeft = baseLeft - scrollLeft;
+                
+                // Always keep header at top when scrolling vertically
+                if (scrollTop > 0) {
+                    header.classList.add('fixed');
+                    header.style.top = `${containerRect.top}px`;
+                    header.style.left = `${containerRect.left + adjustedLeft}px`;
+                    header.style.zIndex = '150';
+                } else {
+                    header.classList.remove('fixed');
+                    header.style.top = '0';
+                    header.style.left = '0';
+                    header.style.zIndex = '100';
+                }
+            });
+        };
+        
+        teamsCompleteView.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll); // Handle window resize
+        handleScroll(); // Initial call
     }
 
     removePlayerFromTeam(teamId, playerId) {
