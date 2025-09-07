@@ -433,6 +433,8 @@
             gap: 0.4rem;
             height: 100%;
             padding: 0.3rem 0.2rem;
+            flex-wrap: nowrap;
+            min-width: min-content;
         }
 
         .team-card {
@@ -445,11 +447,12 @@
             border: 2px solid transparent;
             position: relative;
             min-width: 120px;
-            max-width: 140px;
+            width: 140px;
             height: 100%;
             display: flex;
             flex-direction: column;
             font-size: 0.6rem;
+            flex-shrink: 0;
         }
 
         .team-card:hover {
@@ -815,11 +818,12 @@
             min-height: 0;
         }
 
-        /* Miglioramento responsive */
+        /* Miglioramento responsive - mantieni scroll orizzontale */
         @media (max-width: 1200px) {
             .team-card {
-                min-width: 160px;
-                max-width: 180px;
+                min-width: 120px;
+                width: 140px;
+                flex-shrink: 0;
             }
         }
 
@@ -829,9 +833,10 @@
             }
 
             .team-card {
-                min-width: 150px;
-                max-width: 170px;
-                font-size: 0.8rem;
+                min-width: 110px;
+                width: 130px;
+                font-size: 0.55rem;
+                flex-shrink: 0;
             }
 
             .team-name {
@@ -855,8 +860,9 @@
             }
 
             .team-card {
-                min-width: 140px;
-                max-width: 160px;
+                min-width: 100px;
+                width: 120px;
+                flex-shrink: 0;
             }
 
             .team-players-main {
