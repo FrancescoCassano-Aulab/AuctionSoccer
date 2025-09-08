@@ -440,7 +440,7 @@
           "nome": "Castro",
           "ruolo": "A",
           "fantasyTier": "C",
-          "titolarita": 15,
+          "titolarita": 85,
           "rigorista": false,
           "note": "Vice Immobile, prima alternativa",
           "valore": 20
@@ -449,7 +449,7 @@
           "nome": "Immobile",
           "ruolo": "A",
           "fantasyTier": "C",
-          "titolarita": 85,
+          "titolarita": 15,
           "rigorista": true,
           "note": "Centravanti titolare, fermo 2 mesi per infortunio al retto femorale",
           "infortunato": true,
@@ -2576,7 +2576,7 @@
           "nome": "Isaksen",
           "ruolo": "C",
           "fantasyTier": "B",
-          "titolarita": 34,
+          "titolarita": 70,
           "rigorista": false,
           "note": "In ballottaggio con Pedro e Cancellieri",
           "valore": 13
@@ -2585,7 +2585,7 @@
           "nome": "Pedro",
           "ruolo": "A",
           "fantasyTier": "C",
-          "titolarita": 33,
+          "titolarita": 15,
           "rigorista": true,
           "note": "In ballottaggio con Isaksen e Cancellieri",
           "valore": 13
@@ -2594,7 +2594,7 @@
           "nome": "CANCELLIERI",
           "ruolo": "A",
           "fantasyTier": "C",
-          "titolarita": 40,
+          "titolarita": 15,
           "rigorista": false,
           "note": "Indicato come prima scelta nelle probabili",
           "valore": 9
