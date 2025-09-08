@@ -487,8 +487,8 @@ class FantaCalcioAuction {
             
             return `
                 <tr class="player-row ${isSold ? 'sold' : ''} ${isSelected ? 'selected' : ''}" 
-                    onclick="app.selectPlayer('${player.id}')">
-                    <td class="favorite-cell" data-label="♥" onclick="event.stopPropagation(); app.toggleFavorite('${player.id}')">
+                    onclick="app.selectPlayer(\`${player.id}\`)">
+                    <td class="favorite-cell" data-label="♥" onclick="event.stopPropagation(); app.toggleFavorite(\`${player.id}\`)">
                         <button class="favorite-btn ${isFavorite ? 'favorited' : ''}">
                             ${isFavorite ? '♥' : '♡'}
                         </button>
@@ -528,7 +528,7 @@ class FantaCalcioAuction {
                             ${player.infortunato ? '<span class="mini-badge">⚠️</span>' : ''}
                             ${isSold ? `<div class="sold-info-inline">
                                 <span class="sold-to-team">→ ${soldTo}</span>
-                                <button onclick="app.undoPlayerSale('${player.id}')" class="undo-sale-btn" title="Annulla vendita">↶</button>
+                                <button onclick="app.undoPlayerSale(\`${player.id}\`)" class="undo-sale-btn" title="Annulla vendita">↶</button>
                             </div>` : ''}
                         </div>
                     </td>
