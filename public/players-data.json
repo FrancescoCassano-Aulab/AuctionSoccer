@@ -490,6 +490,15 @@
           "valore": 4
         },
         {
+          "nome": "Ciocci",
+          "ruolo": "P",
+          "fantasyTier": "E",
+          "titolarita": 0,
+          "rigorista": false,
+          "note": "Terzo portiere",
+          "valore": 1
+        },
+        {
           "nome": "Zappa",
           "ruolo": "D",
           "fantasyTier": "C",
