@@ -481,6 +481,15 @@
           "valore": 6
         },
         {
+          "nome": "Palestra",
+          "ruolo": "D",
+          "fantasyTier": "D",
+          "titolarita": 100,
+          "rigorista": false,
+          "note": "pazzesco",
+          "valore": 4
+        },
+        {
           "nome": "Radunovic",
           "ruolo": "P",
           "fantasyTier": "E",
