@@ -488,12 +488,12 @@ class FantaCalcioAuction {
             return `
                 <tr class="player-row ${isSold ? 'sold' : ''} ${isSelected ? 'selected' : ''}" 
                     onclick="app.selectPlayer('${player.id}')">
-                    <td class="favorite-cell" onclick="event.stopPropagation(); app.toggleFavorite('${player.id}')">
+                    <td class="favorite-cell" data-label="♥" onclick="event.stopPropagation(); app.toggleFavorite('${player.id}')">
                         <button class="favorite-btn ${isFavorite ? 'favorited' : ''}">
                             ${isFavorite ? '♥' : '♡'}
                         </button>
                     </td>
-                    <td class="player-name-cell">
+                    <td class="player-name-cell" data-label="Giocatore">
                         <div class="player-name">
                             ${player.nome}
                             ${player.rigorista ? '<span class="rigorista-badge">R</span>' : ''}
@@ -501,19 +501,19 @@ class FantaCalcioAuction {
                         </div>
                         <div class="player-team">${player.squadra}</div>
                     </td>
-                    <td class="role-cell">
+                    <td class="role-cell" data-label="Ruolo">
                         <span class="player-role-badge role-${player.ruolo}">${this.getRoleFullName(player.ruolo)}</span>
                     </td>
-                    <td class="tier-cell">
+                    <td class="tier-cell" data-label="Tier">
                         <span class="fantasy-tier tier-${player.fantasyTier}">${player.fantasyTier}</span>
                     </td>
-                    <td class="rating-cell">
+                    <td class="rating-cell" data-label="Rating">
                         ${this.getPlayerStarRating(player)}
                     </td>
-                    <td class="value-cell" style="color: var(${qualityColor})">
+                    <td class="value-cell" data-label="Valore" style="color: var(${qualityColor})">
                         <strong>${player.valore}</strong>
                     </td>
-                    <td class="titolarita-cell">
+                    <td class="titolarita-cell" data-label="Titolarità">
                         <div class="titolarita-container">
                             <div class="titolarita-bar-mini">
                                 <div class="titolarita-fill" style="width: ${player.titolarita}%; background: var(--role-${player.ruolo.toLowerCase()}-color);"></div>
@@ -521,7 +521,7 @@ class FantaCalcioAuction {
                             <span class="titolarita-text">${player.titolarita}%</span>
                         </div>
                     </td>
-                    <td class="notes-cell">
+                    <td class="notes-cell" data-label="Note/Info">
                         ${player.note ? `<div class="player-note-text">${player.note}</div>` : ''}
                         <div class="player-badges">
                             ${player.titolarita >= 70 ? '<span class="mini-badge">⭐</span>' : ''}
