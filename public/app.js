@@ -318,8 +318,8 @@ class FantaCalcioAuction {
             };
         });
 
-        // Ordina per budget (decrescente) e prendi top 8
-        const sortedTeams = [...teamStats].sort((a, b) => b.budget - a.budget).slice(0, 8);
+        // Ordina per budget (decrescente) e prendi top 10
+        const sortedTeams = [...teamStats].sort((a, b) => b.budget - a.budget).slice(0, 10);
 
         // Header
         let html = `
